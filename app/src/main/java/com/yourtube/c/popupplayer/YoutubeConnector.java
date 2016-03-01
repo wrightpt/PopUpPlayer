@@ -32,6 +32,7 @@ public class YoutubeConnector {
             public void initialize(HttpRequest hr) throws IOException {}
         }).setApplicationName(context.getString(R.string.app_name)).build();
         //context was switched from content
+        
 
         try{
             query = youtube.search().list("id,snippet");
