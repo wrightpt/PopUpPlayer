@@ -22,8 +22,8 @@ public class YoutubeConnector {
     private YouTube.Search.List query;
 
     // Your developer key goes here
-    public static final String KEY
-            = "AIzaSyBtR6Rc_m_9AUXHa9UY9UURbPAuUxlVfZc";
+   public static final String KEY
+           = "AIzaSyBtR6Rc_m_9AUXHa9UY9UURbPAuUxlVfZc";
 
     public YoutubeConnector(Context context) {
         youtube = new YouTube.Builder(new NetHttpTransport(),
