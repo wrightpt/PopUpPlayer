@@ -128,21 +128,21 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
-               WebSettings settings = webView.getSettings();
+             //  WebSettings settings = webView.getSettings();
 
                webView.getSettings().setJavaScriptEnabled(true);
                webView.getSettings().setDomStorageEnabled(true);
 
-               webChromeClient = new VideoEnabledWebChromeClient(Linear,container,v, webView){
+              // webChromeClient = new VideoEnabledWebChromeClient(Linear,container,v, webView){
 
-                   @Override
-                   public void onProgressChanged(WebView view, int progress)
-                   {
+               //    @Override
+               //    public void onProgressChanged(WebView view, int progress)
+              //     {
                        // Your code...
-                   }
-               };
-               webView.setWebChromeClient(webChromeClient);
-               webView.setWebViewClient(new InsideWebViewClient());
+              //     }
+             //  };
+              // webView.setWebChromeClient(webChromeClient);
+              // webView.setWebViewClient(new InsideWebViewClient());
 
 
 
@@ -208,11 +208,12 @@ public class SearchActivity extends AppCompatActivity {
 
                mPopupWindow = new PopupWindow(container, ViewGroup.LayoutParams.WRAP_CONTENT,
                        ViewGroup.LayoutParams.WRAP_CONTENT,false);
-               mPopupWindow.showAtLocation(Linear,Gravity.NO_GRAVITY,100,100);
+               mPopupWindow.showAtLocation(Linear,Gravity.NO_GRAVITY,0,0);
 
                container.setOnTouchListener(new View.OnTouchListener() {
                    @Override
                    public boolean onTouch(View v, MotionEvent event) {
+                       Log.d("touch", "touch");
                        mPopupWindow.dismiss();
                        return false;
                    }

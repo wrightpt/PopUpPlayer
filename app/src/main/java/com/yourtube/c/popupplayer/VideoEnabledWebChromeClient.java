@@ -128,7 +128,9 @@ public class VideoEnabledWebChromeClient extends WebChromeClient implements Medi
             View focusedChild = frameLayout.getFocusedChild();
 
             // Save video related variables
-            this.isVideoFullscreen = true;
+
+            //this.isVideoFullscreen = false;
+           this.isVideoFullscreen = true;
             this.videoViewContainer = frameLayout;
             this.videoViewCallback = callback;
 
