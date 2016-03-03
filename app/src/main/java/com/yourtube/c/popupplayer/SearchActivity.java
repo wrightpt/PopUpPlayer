@@ -219,7 +219,7 @@ public class SearchActivity extends AppCompatActivity {
                });
 
 
-               
+
 
                container.setOnTouchListener(new View.OnTouchListener() {
                    int orgX, orgY;
