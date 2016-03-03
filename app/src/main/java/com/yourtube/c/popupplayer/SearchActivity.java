@@ -112,6 +112,8 @@ public class SearchActivity extends AppCompatActivity {
                                    long id) {
 
                String r = "'" + searchResults.get(pos).getId() + "'";
+              // String url="http://developer.android.com/index.html";
+             //String url =  "https://www.youtube.com/watch?v=KO7vKHmc8CQ";
 
 
              //  final RelativeLayout relative = (RelativeLayout)findViewById(R.id.relative);
@@ -193,13 +195,13 @@ public class SearchActivity extends AppCompatActivity {
                        + "<br><br><br>"
                        +
                        "</body></html>";
-               webView.loadDataWithBaseURL("https://www.youtube.com", customHtml, "text/html; charset=utf-8", "UTF-8", null);
+              webView.loadDataWithBaseURL("https://www.youtube.com", customHtml, "text/html; charset=utf-8", "UTF-8", null);
 
 
 
               // webView.loadData(sb.toString(), "text/html; charset=utf-8; application/javascript ", "UTF-8");
 
-               //webView.loadUrl("http://m.youtube.com/watch?v=5GL9JoH4Sws");
+              // webView.loadUrl(url);
 
 
 
