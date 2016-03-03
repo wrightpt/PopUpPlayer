@@ -55,5 +55,29 @@ public class experimentalcodeforplayer {
             + "Detail content" + "</font>"
             + "<br><br><br></body></html>";
 
+    // String 1 = ("<html><body><iframe width=\\\"100%\\\" height=\\\"100%\\\"   src=\\\"https://www.youtube.com/embed/ "+ r +
+    //        \" frameborder=\"0\" allowfullscreen></iframe></body></html>");
+
+
+
+    // StringBuilder sb;
+    //  sb = new StringBuilder();
+    //  sb.append("<html><body><iframe width=\"100%\" height=\"100%\"   src=\"https://www.youtube.com/embed/");
+    //  sb.append(r);
+
+    //   sb.append("\" frameborder=\"0\" allowfullscreen></iframe></body></html>");
+
+    //  StringBuilder sb2;
+    //  sb2 = new StringBuilder();
+    //  sb2.append("<html><body>Youtube video .. <br> <iframe width=\"320\" height=\"315\" " +
+    //           " src=\"https://www.youtube.com/embed/" + r);
+    //  Log.d("hey",r);
+    //  sb2.append(r);
+    //   sb2.append("\" frameborder=\"0\" allowfullscreen></iframe></body></html>");
+
+    //   Log.d("hey",r);
+
+    //   String m = 'dRvIiIVoVNw';
+
 
 }
