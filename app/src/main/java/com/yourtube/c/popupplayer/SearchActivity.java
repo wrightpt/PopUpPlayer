@@ -113,6 +113,7 @@ public class SearchActivity extends AppCompatActivity {
 
                String r = "'" + searchResults.get(pos).getId() + "'";
 
+
              //  final RelativeLayout relative = (RelativeLayout)findViewById(R.id.relative);
 
                final LinearLayout Linear = (LinearLayout)findViewById(R.id.relative);
@@ -153,8 +154,8 @@ public class SearchActivity extends AppCompatActivity {
                        "      var player;" +
                        "      function onYouTubeIframeAPIReady() {" +
                        "        player = new YT.Player('player', {" +
-                       "        height: '390'," +
-                       "          width: '640'," +
+                       "        height: '200'," +
+                       "          width: '200'," +
                        "          videoId: " +  r  + "  ," +
                        "          events: {" +
                        "            'onReady': onPlayerReady," +
@@ -194,6 +195,8 @@ public class SearchActivity extends AppCompatActivity {
                        "</body></html>";
                webView.loadDataWithBaseURL("https://www.youtube.com", customHtml, "text/html; charset=utf-8", "UTF-8", null);
 
+
+
               // webView.loadData(sb.toString(), "text/html; charset=utf-8; application/javascript ", "UTF-8");
 
                //webView.loadUrl("http://m.youtube.com/watch?v=5GL9JoH4Sws");
@@ -203,7 +206,7 @@ public class SearchActivity extends AppCompatActivity {
 
                mPopupWindow = new PopupWindow(container, ViewGroup.LayoutParams.WRAP_CONTENT,
                        ViewGroup.LayoutParams.WRAP_CONTENT,false);
-               mPopupWindow.showAtLocation(Linear,Gravity.NO_GRAVITY,500,500);
+               mPopupWindow.showAtLocation(Linear,Gravity.NO_GRAVITY,100,100);
 
                container.setOnTouchListener(new View.OnTouchListener() {
                    @Override
