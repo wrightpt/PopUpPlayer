@@ -36,7 +36,8 @@ public class VideoEnabledWebChromeClient extends WebChromeClient implements Medi
     private VideoEnabledWebView webView;
 
     private boolean isVideoFullscreen; // Indicates if the video is being displayed using a custom view (typically full-screen)
-    private FrameLayout videoViewContainer;
+    //private FrameLayout videoViewContainer;
+    private RelativeLayout videoViewContainer;
     private CustomViewCallback videoViewCallback;
 
     private ToggledFullscreenCallback toggledFullscreenCallback;
@@ -121,17 +122,22 @@ public class VideoEnabledWebChromeClient extends WebChromeClient implements Medi
     @Override
     public void onShowCustomView(View view, CustomViewCallback callback)
     {
-        if (view instanceof FrameLayout)
+
+        if (view instanceof RelativeLayout)
+        //if (view instanceof FrameLayout)
         {
             // A video wants to be shown
-            FrameLayout frameLayout = (FrameLayout) view;
-            View focusedChild = frameLayout.getFocusedChild();
+            RelativeLayout relativeLayout = (RelativeLayout) view;
+            //FrameLayout frameLayout = (FrameLayout) view;
+            View focusedChild = relativeLayout.getFocusedChild();
+            //View focusedChild = frameLayout.getFocusedChild();
 
             // Save video related variables
 
             //this.isVideoFullscreen = false;
            this.isVideoFullscreen = true;
-            this.videoViewContainer = frameLayout;
+           this.videoViewContainer = relativeLayout;
+            // this.videoViewContainer = frameLayout;
             this.videoViewCallback = callback;
 
             // Hide the non-video view, add the video view, and show it
