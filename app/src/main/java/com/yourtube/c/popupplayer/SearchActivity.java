@@ -1,5 +1,6 @@
 package com.yourtube.c.popupplayer;
 
+import android.annotation.*;
 import android.content.*;
 import android.os.*;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,8 @@ import com.squareup.picasso.*;
 
 import java.util.*;
 
+
+@SuppressLint("SetJavaScriptEnabled")
 public class SearchActivity extends AppCompatActivity {
 
 
@@ -142,12 +145,13 @@ public class SearchActivity extends AppCompatActivity {
               //     }
              //  };
               // webView.setWebChromeClient(webChromeClient);
-              // webView.setWebViewClient(new InsideWebViewClient());
+              webView.setWebViewClient(new InsideWebViewClient());
 
 
 
 
                String  video = "<div id=\"player\"></div>" +
+
                        "    <script>" +
                        "      var tag = document.createElement('script');" +
                        "      tag.src = \"https://www.youtube.com/iframe_api\";" +
@@ -181,25 +185,61 @@ public class SearchActivity extends AppCompatActivity {
                        "    </script>";
 
 
+               String video1 = "<div id=\"player\"></div>" +
+                       " +  <script src=\"js/video.js\"></script> " +
+                       " <script src=\"js/media.youtube.js\"></script> " +
+                       " <video id=\"XEEasR7hVhA\" class=\"video-js vjs-default-skin\" controls \n" +
+                       "       preload=\"auto\" width=\"640\" height=\"264\"\n" +
+                    //   "       poster=\"http://ec2-54-227-116-247.compute-1.amazonaws.com/models/site-templates/images/cover_img/ted_cover.jpg\" \n" +
+                       "       data-setup='{\"techOrder\":[\"youtube\"], \"src\":\"https://www.youtube.com/watch?v=xYemnKEKx0c\"}'>\n" +
+                       "</video>";
+
+
                String customHtml = "<html>" + "<body>"
                     /*add the video here*/
                        + video
-                      + "<b><font size=\""
-                      + 5 + "\">"
-                       + "<div id='wrap'>"
+                   //   + "<b><font size=\""
+                   //   + 5 + "\">"
+                  //     + "<div id='wrap'>"
                    //    + "Test title"
                     //  + "</font></b>"
                     //  + "<font size=\"" + 3 + "\"><br><br><i>Detail1: " + "Test" + "<br/>" + "new_date" + "<br />Detail2: "+ "Test" +"</i></font><br><br>"
                     //  + "<font size=\"" + 3 + "\">"
                   //    + "Detail content" + "</font>"
-                       + "<br><br><br>"
+                   //    + "<br><br><br>"
                        +
                        "</body></html>";
-              webView.loadDataWithBaseURL("https://www.youtube.com", customHtml, "text/html; charset=utf-8", "UTF-8", null);
+
+               String CustomHtml2 = "<html>\n" +
+                       "<head>\n" +
+                       "  <link type=\"text/css\" rel=\"stylesheet\" href=\"../node_modules/video.js/dist/video-js.min.css\" />\n" +
+                       "</head>\n" +
+                       "<body>\n" +
+                       "  <video\n" +
+                       "    id=\"vid1\"\n" +
+                       "    class=\"video-js vjs-default-skin\"\n" +
+                       "    controls\n" +
+                       "    autoplay\n" +
+                       "    width=\"640\" height=\"264\"\n" +
+                       "    data-setup='{ \"techOrder\": [\"youtube\"], \"sources\": [{ \"type\": \"video/youtube\", \"src\": \"https://www.youtube.com/watch?v=xjS6SftYQaQ\"}] }'\n" +
+                       "  >\n" +
+                       "  </video>\n" +
+                       "\n" +
+                       "  <script src=\"../node_modules/video.js/dist/video.min.js\"></script>\n" +
+                       "  <script src=\"../dist/Youtube.min.js\"></script>\n" +
+                       "</body>\n" +
+                       "</html>";
+
+               String customHtml1 = "<html>" + "<body>" + video1 +  "</body></html>";
+              webView.loadDataWithBaseURL("https://www.youtube.com", customHtml1, "text/html; charset=utf-8; application/json", "UTF-8", null);
+             // webView.loadDataWithBaseURL("https://www.youtube.com", customHtml1, "application/javascript; application/json;  charset=utf-8" , "UTF-8", null);
+
+
+               webView.loadDataWithBaseURL("https://www.youtube.com", CustomHtml2, "text/html; charset=utf-8; application/json", "UTF-8", null);
 
 
 
-              // webView.loadData(sb.toString(), "text/html; charset=utf-8; application/javascript ", "UTF-8");
+               // webView.loadData(sb.toString(), "text/html; charset=utf-8; application/javascript ", "UTF-8");
 
               // webView.loadUrl(url);
 
