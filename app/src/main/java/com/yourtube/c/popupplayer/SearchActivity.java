@@ -179,7 +179,7 @@ public class SearchActivity extends AppCompatActivity {
                        "        player = new YT.Player('player', {" +
                        "        height: '100%'," +
                        "          width: '100%'," +
-                       "          videoId: " +  z + "  ," +
+                      "          videoId: " +  z + "  ," +
                        "          events: {" +
                        "            'onReady': onPlayerReady," +
                        "            'onStateChange': onPlayerStateChange" +
@@ -187,6 +187,7 @@ public class SearchActivity extends AppCompatActivity {
                        "        });" +
                        "      }" +
                        "      function onPlayerReady(event) {" +
+                     //  "       event.target.loadVideoById("    +
                        "        event.target.playVideo();" +
                        "      }" +
                        "      var done = false;" +
@@ -292,7 +293,10 @@ public class SearchActivity extends AppCompatActivity {
                        "                margin: 0;\n" +
                        "                padding: 0;\n" +
                          "               border: 0;\n" +
-                       "                outline: 0;\n "+ " font-size: 0;\n" +
+                       "                outline: 0;\n "+
+
+
+                      " font-size: 0;\n" +
                //        "               vertical-align: bottom" +
 
                //        "background: transparent;" +
@@ -323,9 +327,9 @@ public class SearchActivity extends AppCompatActivity {
 
 
               // webView.loadDataWithBaseURL("https://www.youtube.com", R, "text/html; charset=utf-8", "UTF-8", null);
-              // webview1.loadDataWithBaseURL("https://www.youtube.com", Z, "text/html; charset=utf-8", "UTF-8", null);
+              webview1.loadDataWithBaseURL("https://www.youtube.com", Z, "text/html; charset=utf-8", "UTF-8", null);
 
-              webview1.loadData(Z, "text/html; charset=utf-8; application/javascript ", "UTF-8");
+            // webview1.loadData(Z, "text/html; charset=utf-8; application/javascript ", "UTF-8");
 
                //webView.loadUrl("http://m.youtube.com/watch?v=5GL9JoH4Sws");
 
@@ -346,7 +350,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
-               container.setOnTouchListener(new View.OnTouchListener() {
+               webview1.setOnTouchListener(new View.OnTouchListener() {
                    int orgX, orgY;
                    int offsetX, offsetY;
 
