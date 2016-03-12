@@ -292,7 +292,8 @@ public class SearchActivity extends AppCompatActivity {
                        "                margin: 0;\n" +
                        "                padding: 0;\n" +
                          "               border: 0;\n" +
-                       "                outline: 0;\n "+
+                       "                outline: 0;\n "+ " font-size: 0;\n" +
+               //        "               vertical-align: bottom" +
 
                //        "background: transparent;" +
 
