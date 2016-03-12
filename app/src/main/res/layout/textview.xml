@@ -5,11 +5,18 @@
                 android:id="@+id/container"
                 android:background="#6c0c0c">
 
-
     <com.yourtube.c.popupplayer.VideoEnabledWebView
         android:id="@+id/webView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+
+<WebView
+    android:id="@+id/webView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+
 
 
 

@@ -22,6 +22,9 @@ public class SearchActivity extends AppCompatActivity {
     private VideoEnabledWebView webView;
     private VideoEnabledWebChromeClient webChromeClient;
 
+    private WebView webview1;
+
+
 
 
     //private FrameLayout mCustomViewContainer;
@@ -113,7 +116,17 @@ public class SearchActivity extends AppCompatActivity {
 
                String r = "'" + searchResults.get(pos).getId() + "'";
 
+               String m = "'" + searchResults.get(pos).getId() + "?rel=0&autohide=1&showinfo=0" +  "'";
+
+               String n = "'" + searchResults.get(pos).getId() + "?modestbranding=1&controls=0;autohide=1&amp;showinfo=0&amp;" +  "'";
+
+               String z = "'" + searchResults.get(pos).getId() + "?modestbranding=1&controls=0&autohide=1&amp&showinfo=0&amp;" +  "'";
+
              //  final RelativeLayout relative = (RelativeLayout)findViewById(R.id.relative);
+
+            //   VideoView videoView =(VideoView)findViewById(R.id.videoView1);
+             //  videoView.setVideoURI();
+             //  MediaController mediaController= new MediaController(new );
 
                final LinearLayout Linear = (LinearLayout)findViewById(R.id.relative);
 
@@ -121,30 +134,41 @@ public class SearchActivity extends AppCompatActivity {
                mLayoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                final ViewGroup container = (ViewGroup) mLayoutInflater.inflate(R.layout.textview,null);
 
-               webView = (VideoEnabledWebView)container.findViewById(R.id.webView);
+           webView = (VideoEnabledWebView)container.findViewById(R.id.webView);
+
+               webview1 = (WebView)container.findViewById(R.id.webView1) ;
+               webview1.getSettings().setJavaScriptEnabled(true);
+               webview1.getSettings().setDomStorageEnabled(true);
+               webview1.setWebChromeClient(webChromeClient);
+               webview1.setWebViewClient(new InsideWebViewClient());
+               webview1.setPadding(0,0,0,0);
+
 
 
 
                WebSettings settings = webView.getSettings();
 
-               webView.getSettings().setJavaScriptEnabled(true);
-               webView.getSettings().setDomStorageEnabled(true);
+             // webView.getSettings().setJavaScriptEnabled(true);
+              // webView.getSettings().setDomStorageEnabled(true);
 
-               webChromeClient = new VideoEnabledWebChromeClient(Linear,container,v, webView){
+              // webChromeClient = new VideoEnabledWebChromeClient(Linear,container,v, webView){
 
-                   @Override
-                   public void onProgressChanged(WebView view, int progress)
-                   {
-                       // Your code...
-                   }
-               };
-               webView.setWebChromeClient(webChromeClient);
-               webView.setWebViewClient(new InsideWebViewClient());
+               //   @Override
+                //   public void onProgressChanged(WebView view, int progress)
+                //  {
+                //       // Your code...
+                //  }
+              // };
+             // webView.setWebChromeClient(webChromeClient);
+             //  webView.setWebViewClient(new InsideWebViewClient());
+              // webView.setPadding(0,0,0,0);
 
 
 
 
-               String  video = "<div id=\"player\"></div>" +
+               String  video =
+
+                       "<div id=\"player\"></div>" +
                        "    <script>" +
                        "      var tag = document.createElement('script');" +
                        "      tag.src = \"https://www.youtube.com/iframe_api\";" +
@@ -153,9 +177,9 @@ public class SearchActivity extends AppCompatActivity {
                        "      var player;" +
                        "      function onYouTubeIframeAPIReady() {" +
                        "        player = new YT.Player('player', {" +
-                       "        height: '390'," +
-                       "          width: '640'," +
-                       "          videoId: " +  r  + "  ," +
+                       "        height: '100%'," +
+                       "          width: '100%'," +
+                       "          videoId: " +  z + "  ," +
                        "          events: {" +
                        "            'onReady': onPlayerReady," +
                        "            'onStateChange': onPlayerStateChange" +
@@ -177,24 +201,130 @@ public class SearchActivity extends AppCompatActivity {
                        "      }" +
                        "    </script>";
 
+               String h = "<script Language=\"JavaScript\">\n" +
+                       "var width=678;\n" +
+                       "var height=500;\n" +
+                       "self.moveTo((screen.availwidth-width)/2,(screen.availheight-height)/2);\n" +
+                       "self.resizeTo(width,height);\n" +
+                       "</script>";
 
-               String customHtml = "<html>" + "<body>"
+
+               String customHtml = "<html>" + "<head>\n" +
+           //            "<script language=\"JavaScript\" type=\"text/javascript\">\n" +
+                  //     "<!--\n" +
+           //            "window.resizeTo(80,80);\n" +
+                   //    "//-->\n" +
+          //             "</script>"
+            //           "<style>\n" +
+            //           "div {\n" +
+            //           "    width: 500px;\n" +
+            //           "    height: 300px;\n" +
+            //           "    border: 3px solid #73AD21;\n" +
+           //            "}\n" +
+           //            "</style>\n" +
+           //            "</head>" +
+                      "<body>" +
+
+                       "<script Language=\"JavaScript\">\n" +
+                      "var width=150;\n" +
+                    "var height=300;\n" +
+                      "self.moveTo((screen.availwidth-width)/2,(screen.availheight-height)/2);\n" +
+                      "self.resizeTo(width,height);\n" +
+                      "</script>"
+
+
                     /*add the video here*/
                        + video
-                      + "<b><font size=\""
-                      + 5 + "\">"
-                       + "<div id='wrap'>"
+                 //     + "<b><font size=\""
+                  //    + 5 + "\">"
+                  //     + "<div id='wrap'>"
                    //    + "Test title"
                     //  + "</font></b>"
                     //  + "<font size=\"" + 3 + "\"><br><br><i>Detail1: " + "Test" + "<br/>" + "new_date" + "<br />Detail2: "+ "Test" +"</i></font><br><br>"
                     //  + "<font size=\"" + 3 + "\">"
                   //    + "Detail content" + "</font>"
-                       + "<br><br><br>"
+                //       + "<br><br><br>"
                        +
                        "</body></html>";
-               webView.loadDataWithBaseURL("https://www.youtube.com", customHtml, "text/html; charset=utf-8", "UTF-8", null);
 
-              // webView.loadData(sb.toString(), "text/html; charset=utf-8; application/javascript ", "UTF-8");
+               String R = "<!DOCTYPE html>\n" +
+                       "<html>\n" +
+                       "    <head>\n" +
+                //       "        <title>Hello World</title>\n" +
+                       "        <style>\n" +
+                       "            html, body {\n" +
+                       "                width: 100;\n" +
+                       "                height: 100;\n" +
+                       "                margin: 0;\n" +
+                       "                padding: 0;\n" +
+
+              //         "                background-color: green;\n" +
+              //         "            }\n" +
+               //        "            #container {\n" +
+                //       "                width: inherit;\n" +
+                //       "                height: inherit;\n" +
+                //       "                margin: 0;\n" +
+                //       "                padding: 0;\n" +
+                //       "                background-color: pink;\n" +
+                //       "            }\n" +
+                //       "            h1 {\n" +
+                //       "                margin: 0;\n" +
+                //       "                padding: 0;\n" +
+                //       "            }\n" +
+                       "        </style>\n" +
+                       "    </head>\n" +
+                       "    <body>\n" + video +
+                  //     "        <div id=\"container\">\n" +
+                  //     "            <h1>Hello World</h1>\n" +
+                  //     "        </div>\n" +
+                       "    </body>\n";
+
+               String Z = "<!DOCTYPE html>\n" +
+                       "<html>\n" +
+                       "    <head>\n" +
+                       //       "        <title>Hello World</title>\n" +
+                       "        <style>\n" +
+                       "          head,  body, " +
+                       "html" +
+                       " {\n" +
+                       "                width: 100;\n" +
+                       "                height: 100;\n" +
+                       "                margin: 0;\n" +
+                       "                padding: 0;\n" +
+                         "               border: 0;\n" +
+                       "                outline: 0;\n "+
+
+               //        "background: transparent;" +
+
+
+                    //          "                background-color: green;\n" +
+                               "            }\n" +
+                       //        "            #container {\n" +
+                       //       "                width: inherit;\n" +
+                       //       "                height: inherit;\n" +
+                       //       "                margin: 0;\n" +
+                       //       "                padding: 0;\n" +
+                       //       "                background-color: pink;\n" +
+                       //       "            }\n" +
+                       //       "            h1 {\n" +
+                       //       "                margin: 0;\n" +
+                       //       "                padding: 0;\n" +
+                      //        "            }\n" +
+                       "        </style>\n" + video +
+                       "    </head>\n" +
+                   "    <body>\n" +
+           //    +
+                       //     "        <div id=\"container\">\n" +
+                       //     "            <h1>Hello World</h1>\n" +
+                       //     "        </div>\n" +
+                       "    </body>" +
+                      "</html>\n";
+
+
+              // webView.loadDataWithBaseURL("https://www.youtube.com", R, "text/html; charset=utf-8", "UTF-8", null);
+              // webview1.loadDataWithBaseURL("https://www.youtube.com", Z, "text/html; charset=utf-8", "UTF-8", null);
+
+              webview1.loadData(Z, "text/html; charset=utf-8; application/javascript ", "UTF-8");
 
                //webView.loadUrl("http://m.youtube.com/watch?v=5GL9JoH4Sws");
 
@@ -203,7 +333,7 @@ public class SearchActivity extends AppCompatActivity {
 
                mPopupWindow = new PopupWindow(container, ViewGroup.LayoutParams.WRAP_CONTENT,
                        ViewGroup.LayoutParams.WRAP_CONTENT,false);
-               mPopupWindow.showAtLocation(Linear,Gravity.NO_GRAVITY,500,500);
+               mPopupWindow.showAtLocation(Linear,Gravity.NO_GRAVITY,100,100);
 
                container.setOnTouchListener(new View.OnTouchListener() {
                    @Override
@@ -229,7 +359,7 @@ public class SearchActivity extends AppCompatActivity {
                            case MotionEvent.ACTION_MOVE:
                                offsetX = (int)event.getRawX() - orgX;
                                offsetY = (int)event.getRawY() - orgY;
-                               mPopupWindow.update(offsetX, offsetY, -1, -1, true);
+                               mPopupWindow.update(offsetX, offsetY, 0, 0, false);
                                break;
                        }
                        return true;
