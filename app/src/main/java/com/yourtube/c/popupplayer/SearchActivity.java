@@ -1,5 +1,6 @@
 package com.yourtube.c.popupplayer;
 
+import android.annotation.*;
 import android.content.*;
 import android.os.*;
 import android.support.v7.app.AppCompatActivity;
@@ -110,6 +111,7 @@ public class SearchActivity extends AppCompatActivity {
    private void addClickListener(){
      videosFound.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+           @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
            @Override
            public void onItemClick(AdapterView<?> av, View v, int pos,
                                    long id) {
@@ -117,6 +119,8 @@ public class SearchActivity extends AppCompatActivity {
                String r = "'" + searchResults.get(pos).getId() + "'";
 
                String m = "'" + searchResults.get(pos).getId() + "?rel=0&autohide=1&showinfo=0" +  "'";
+
+               String m1 =  "'" + searchResults.get(pos).getId() + "?modestbranding=1&controls=0" +  "'";
 
                String n = "'" + searchResults.get(pos).getId() + "?modestbranding=1&controls=0;autohide=1&amp;showinfo=0&amp;" +  "'";
 
@@ -142,6 +146,7 @@ public class SearchActivity extends AppCompatActivity {
                webview1.setWebChromeClient(webChromeClient);
                webview1.setWebViewClient(new InsideWebViewClient());
                webview1.setPadding(0,0,0,0);
+               webview1.getSettings().setMediaPlaybackRequiresUserGesture(false);
 
 
 
@@ -201,6 +206,139 @@ public class SearchActivity extends AppCompatActivity {
                        "        player.stopVideo();" +
                        "      }" +
                        "    </script>";
+
+
+
+               String iframetest = "iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\"\n" +
+                       "  src=\"http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com\"\n" +
+                       "  frameborder=\"0\"/>";
+
+               String  video1 =
+
+                       "<div id=\"player\"></div>" +
+                               "    <script>" +
+                               "      var tag = document.createElement('script');" +
+                               "      tag.src = \"https://www.youtube.com/iframe_api\";" +
+                               "      var firstScriptTag = document.getElementsByTagName('script')[0];" +
+                               "      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);" +
+                               "      var player;" +
+                               "      function onYouTubeIframeAPIReady() {" +
+                               "        player = new YT.Player('player', {" +
+                               "        height: '100%'," +
+                               "          width: '100%'," +
+                               "          videoId: " +  r + "  ," +
+                               "              playerVars: { 'autoplay': 1, 'controls': 0, 'html5': 1 }," +
+                               "          events: {" +
+                               "            'onReady': onPlayerReady," +
+                             //   "            'onReady':loadVideoById,"+
+                               "            'onStateChange': onPlayerStateChange" +
+                               "          }" +
+                               "        });" +
+                               "      }" +
+                               "      function onPlayerReady(event) {" +
+                         //        "       event.target.loadVideoById("+ m1 +", 0, \"large\") "    +
+                               "        event.target.playVideo();" +
+                               "      }" +
+
+                               "function loadVideoById(event) {" +
+                               "event.target.playVideo() };" +
+                               "      var done = false;" +
+                               "      function onPlayerStateChange(event) {" +
+                               "        if (event.data == YT.PlayerState.PLAYING && !done) {" +
+                               //   "          setTimeout(stopVideo, 6000);" +
+                               "          done = true;" +
+                               "        }" +
+                               "      }" +
+                               "      function stopVideo() {" +
+                               "        player.stopVideo();" +
+                               "      }" +
+                               "    </script>";
+
+               String javascriptvideo2 = "$(function() {\n" +
+                       "    var tag = document.createElement('script');\n" +
+                       "    tag.src = \"//www.youtube.com/iframe_api\";\n" +
+                       "\n" +
+                       "    var firstScriptTag = document.getElementsByTagName('script')[0];\n" +
+                       "    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);\n" +
+                       "\n" +
+                       "    var player;\n" +
+                       "\n" +
+                       "    window.onYouTubeIframeAPIReady = function() {\n" +
+                       "        player = new YT.Player('player', {\n" +
+                       "            height: '390',\n" +
+                       "            width: '640',\n" +
+                       "            videoId: 'OEoXaMPEzfM',\n" +
+                       "            playerVars: {\n" +
+                       "                html5: 1,\n" +
+                       "                controls: 0,\n" +
+                       "                modestbranding: 1,\n" +
+                       "                showinfo: 0,\n" +
+                       "                origin: 'http://fiddle.jshell.net',\n" +
+                       "                rel: 0\n" +
+                       "            },\n" +
+                       "            events: {\n" +
+                       "                'onReady': onPlayerReady,\n" +
+                       "                'onStateChange': onPlayerStateChange,\n" +
+                       "                'onPlaybackRateChange': onPlaybackRateChange\n" +
+                       "            }\n" +
+                       "        });\n" +
+                       "    };\n" +
+                       "\n" +
+                       "    var available_rates = $('#available_rates');\n" +
+                       "    var other_rates = $('#other_rates');\n" +
+                       "    var rate = $('#rate');\n" +
+                       "\n" +
+                       "    function onPlayerReady(event) {\n" +
+                       "        // add one option for each supported playback rate\n" +
+                       "        jQuery.each(player.getAvailablePlaybackRates(),\n" +
+                       "                    function (index, value) {\n" +
+                       "                        addSpeedControl(index, value, available_rates);\n" +
+                       "                    });\n" +
+                       "\n" +
+                       "        // add one option for some extra values\n" +
+                       "        jQuery.each([0.1, 1.75, 5], \n" +
+                       "\t                function (index, value) {\n" +
+                       "                        addSpeedControl(index, value, other_rates);\n" +
+                       "                    });\n" +
+                       "\n" +
+                       "        event.target.playVideo();\n" +
+                       "    }\n" +
+                       "\n" +
+                       "    function addSpeedControl(index, value, el) {\n" +
+                       "        el.append($('<li>').append($('<a>', {\n" +
+                       "            text: value,\n" +
+                       "            href: '#',\n" +
+                       "            click: function() {\n" +
+                       "                player.setPlaybackRate(value);\n" +
+                       "            }\n" +
+                       "        })));\n" +
+                       "    }\n" +
+                       "\n" +
+                       "    function onPlayerStateChange(event) {\n" +
+                       "        rate.html(player.getPlaybackRate());\n" +
+                       "    }\n" +
+                       "\n" +
+                       "    function onPlaybackRateChange(event) {\n" +
+                       "        rate.html(player.getPlaybackRate());\n" +
+                       "    }\n" +
+                       "\n" +
+                       "    function stopVideo() {\n" +
+                       "        player.stopVideo();\n" +
+                       "    }\n" +
+                       "});";
+
+               String htmlforvideo2 = "<!DOCTYPE html>\n" +
+                       "<html>\n" +
+                       "  <body>\n" +
+                       "    <div id=\"player\"></div>\n" +
+                       "      <h3>Playback rate:</h3>\n" +
+                       "      <span id=\"rate\"> </span> \n" +
+                       "      <h3> Available Rates </h3>\n" +
+                       "      <ul id=\"available_rates\"> </ul>   \n" +
+                       "      <h3> Other Rates (for testing) </h3>\n" +
+                       "      <ul id=\"other_rates\"> </ul>   \n" + javascriptvideo2 +
+                       "  </body>\n" +
+                       "</html>";
 
                String h = "<script Language=\"JavaScript\">\n" +
                        "var width=678;\n" +
@@ -315,9 +453,11 @@ public class SearchActivity extends AppCompatActivity {
                        //       "                margin: 0;\n" +
                        //       "                padding: 0;\n" +
                       //        "            }\n" +
-                       "        </style>\n" + video +
+                       "        </style>\n" +
+                     //  video1 +
                        "    </head>\n" +
                    "    <body>\n" +
+                 //      video1+
            //    +
                        //     "        <div id=\"container\">\n" +
                        //     "            <h1>Hello World</h1>\n" +
@@ -326,8 +466,20 @@ public class SearchActivity extends AppCompatActivity {
                       "</html>\n";
 
 
+               String Z1 = "<!DOCTYPE html>\n" +
+                       "<html>\n" +
+                       "<body>\n" +
+                       "\n" +
+                       "<iframe width=\"420\" height=\"345\"\n" +
+                       "src=\"http://www.youtube.com/embed/XGSy3_Czz8k\">\n" +
+                       "</iframe>\n" +
+                       "\n" +
+                       "</body>\n" +
+                       "</html>";
+
+
               // webView.loadDataWithBaseURL("https://www.youtube.com", R, "text/html; charset=utf-8", "UTF-8", null);
-              webview1.loadDataWithBaseURL("https://www.youtube.com", Z, "text/html; charset=utf-8", "UTF-8", null);
+              webview1.loadDataWithBaseURL("https://www.youtube.com", Z1, "text/html; charset=utf-8", "UTF-8", null);
 
             // webview1.loadData(Z, "text/html; charset=utf-8; application/javascript ", "UTF-8");
 
@@ -350,7 +502,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
-               webview1.setOnTouchListener(new View.OnTouchListener() {
+               container.setOnTouchListener(new View.OnTouchListener() {
                    int orgX, orgY;
                    int offsetX, offsetY;
 
