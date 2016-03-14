@@ -1,0 +1,66 @@
+{
+  "project_info": {
+    "project_id": "yourtube-5704f",
+    "project_number": "384831807026",
+    "name": "Yourtube"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384831807026:android:1bc281a730aed2a6",
+        "client_id": "android:com.yourtube.c.popupplayer",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.yourtube.c.popupplayer",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384831807026-h85v9rvcn3886psm0f0n40d6h7dhsv7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yourtube.c.popupplayer",
+            "certificate_hash": "56A2871970A08B5F9A6D0F2E1706B950754AB3F4"
+          }
+        },
+        {
+          "client_id": "384831807026-ksodupidtsp2ebf5d98hof8p49a69234.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-53147821-1"
+          }
+        },
+        "cloud_messaging_service": {
+          "status": 2,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384831807026-ksodupidtsp2ebf5d98hof8p49a69234.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 2,
+          "test_banner_ad_unit_id": "ca-app-pub-3940256099942544/6300978111",
+          "test_interstitial_ad_unit_id": "ca-app-pub-3940256099942544/1033173712"
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
