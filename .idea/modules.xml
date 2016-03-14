@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PopUpPlayer.iml" filepath="$PROJECT_DIR$/PopUpPlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/PopUpPlayer5.iml" filepath="$PROJECT_DIR$/PopUpPlayer5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PopUpPlayerbranch10.iml" filepath="$PROJECT_DIR$/PopUpPlayerbranch10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
